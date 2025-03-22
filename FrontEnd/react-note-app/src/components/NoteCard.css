@@ -1,0 +1,150 @@
+/* Smooth transition for all animations */
+.transition-all {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Card base styling */
+  .card {
+    background-color: #f8f9fa; /* Light grey background */
+    border-radius: 12px; /* Smooth rounded edges */
+    overflow: hidden;
+    position: relative;
+    transform-origin: center;
+    animation: fadeIn 0.5s ease-in-out;
+    padding: 20px;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  /* Hover Effects */
+  .card:hover {
+    background-color: white !important;
+    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.25) !important;
+    transform: translateY(-10px) scale(1.05);
+    transition: all 0.4s ease-in-out;
+    border-color: #ff4b2b;
+  }
+  
+  /* Subtle Glow Effect */
+  .card:hover::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    z-index: -1;
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+  }
+  .card:hover::before {
+    opacity: 1;
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Ripple effect on click */
+  .card:active::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple 0.6s ease-out;
+  }
+  
+  @keyframes ripple {
+    from {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0.6;
+    }
+    to {
+      transform: translate(-50%, -50%) scale(3);
+      opacity: 0;
+    }
+  }
+  
+  /* Floating Effect */
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .card.float-animation {
+    animation: float 3.5s ease-in-out infinite;
+  }
+  
+  /* Gradient Border Animation */
+  @keyframes borderAnimation {
+    0% {
+      border-image-source: linear-gradient(45deg, #ff416c, #ff4b2b);
+    }
+    50% {
+      border-image-source: linear-gradient(45deg, #1e90ff, #00c9ff);
+    }
+    100% {
+      border-image-source: linear-gradient(45deg, #ff416c, #ff4b2b);
+    }
+  }
+  
+  .card.animated-border {
+    border: 3px solid;
+    border-image-slice: 1;
+    animation: borderAnimation 6s linear infinite;
+  }
+  
+  /* Pulsating Shadow Effect */
+  @keyframes pulseShadow {
+    0% {
+      box-shadow: 0px 0px 10px rgba(255, 75, 43, 0.2);
+    }
+    50% {
+      box-shadow: 0px 0px 20px rgba(255, 75, 43, 0.5);
+    }
+    100% {
+      box-shadow: 0px 0px 10px rgba(255, 75, 43, 0.2);
+    }
+  }
+  
+  .card.pulse-shadow {
+    animation: pulseShadow 2s infinite;
+  }
+  
+  /* Rotate Effect */
+  @keyframes rotateEffect {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .card.rotate-hover:hover {
+    animation: rotateEffect 1s linear;
+  }
+  
